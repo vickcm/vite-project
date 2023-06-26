@@ -1,0 +1,34 @@
+CARRERA:
+Tecnicatura Superior en Diseño y Programación Web
+(Resolución 80/SSPECT/2019)
+***
+ASIGNATURA:
+Clientes Web Mobile
+***
+CUATRIMESTRE:
+4to Cuatrimestre de Cursada (fecha de cursada: 2023 - 1er cuatrimestre)
+***
+AÑO 
+2023
+***
+TURNO: 
+Noche
+***
+COMISIÓN: 
+DWN4AV
+***
+
+ALUMNA1: Castro Menna, Victoria 
+***
+DOCENTE:
+Gallino, Santiago
+***
+USUARIO - ROLES
+
+admin: para administrador  
+user: para usuario 
+
+- admin: admin@admin.com pasword: olvidate
+
+
+# Segundo Parcial - Clientes Web Mobile
