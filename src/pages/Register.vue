@@ -1,35 +1,28 @@
 <template>
   <div class="flex justify-center h-screen">
-    <div class="w-1/2 bg-white p-6 rounded-lg">
+    <div class="w-full sm:w-1/2 bg-white p-6 rounded-lg">
       <h1 class="text-3xl font-bold">
         Registrarse
       </h1>
-      <p class="text-xs text-gray-400 my-2">Una vez registrado podrás hacer consultas con el chat y reservar productos.
+      <p class="text-xs text-gray-400 my-2">
+        Una vez registrado podrás hacer consultas con el chat y reservar productos.
       </p>
-
 
       <CompLoading v-if="formLoading" />
 
       <form @submit.prevent="handleSubmit" class="mt-4 p-4 border rounded-lg bg-gray-100" v-if="!formLoading">
         <div class="text-xs text-gray-400 my-2">Todos los campos son obligatorios</div>
         <div class="mb-4">
-          <CompLabel for="displayName">
-            Nombre de Usuario*
-          </CompLabel>
+          <CompLabel for="displayName">Nombre de Usuario*</CompLabel>
           <CompInput v-model="form.displayName" />
         </div>
         <div class="mb-4">
-          <CompLabel for="email">
-            Mail*
-          </CompLabel>
+          <CompLabel for="email">Mail*</CompLabel>
           <CompInput type="email" v-model="form.email" />
         </div>
         <div class="mb-4">
-          <CompLabel for="password">
-            Password*
-          </CompLabel>
+          <CompLabel for="password">Password*</CompLabel>
           <div class="text-xs text-gray-400 my-2">La contraseña debe contener por lo menos 6 caracteres.</div>
-
           <div class="relative">
             <CompInput :type="showPassword.password ? 'text' : 'password'" v-model="form.password"
               :inputClass="{ 'pr-10': !showPassword.password }" />
@@ -40,9 +33,7 @@
           </div>
         </div>
         <div class="mb-4">
-          <CompLabel for="confirmPassword">
-            Confirmar Password*
-          </CompLabel>
+          <CompLabel for="confirmPassword">Confirmar Password*</CompLabel>
           <div class="relative">
             <CompInput :type="showPassword.confirmPassword ? 'text' : 'password'" v-model="form.confirmPassword"
               :inputClass="{ 'pr-10': !showPassword.confirmPassword }" />
@@ -52,10 +43,7 @@
             </span>
           </div>
         </div>
-
-        <CompButton type="submit">
-          Crear Usuario
-        </CompButton>
+        <CompButton type="submit">Crear Usuario</CompButton>
       </form>
     </div>
   </div>
@@ -151,5 +139,11 @@ const useRegister = () => {
   };
 };
 
-const { form, formLoading, handleSubmit, showPassword, togglePasswordVisibility } = useRegister();
+const {
+  form,
+  formLoading,
+  handleSubmit,
+  showPassword,
+  togglePasswordVisibility,
+} = useRegister();
 </script>

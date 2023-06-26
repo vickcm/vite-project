@@ -8,9 +8,7 @@
 
     <CompLoading v-if="initialLoading">Cargando...</CompLoading>
 
-    <p class="mb-4 text-sm text-gray-700">Para poder reservar los productos es necesario haber iniciado la sesión.</p>
-
-
+   
     <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <li v-for="product in products" :key="product.id"
         class="bg-white shadow-md rounded-lg overflow-hidden transform hover:scale-105 transition duration-300">

@@ -56,7 +56,7 @@ function useLoginForm() {
 
 <template>
   <div class="flex justify-center h-screen">
-    <div class="w-1/2">
+    <div class="w-full sm:w-1/2 p-6 rounded-lg">
       <h1 class="text-3xl font-bold">
         Iniciar Sesión
       </h1>

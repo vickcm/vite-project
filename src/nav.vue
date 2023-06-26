@@ -6,6 +6,21 @@ import { provide, ref, computed } from 'vue';
 import CompAlert from './components/CompAlert.vue';
 import { notificationProvider } from "./symbols/symbols.js";
 
+const mobileMenuOpen = ref(false);
+
+function toggleMobileMenu() {
+    mobileMenuOpen.value = !mobileMenuOpen.value;
+}
+
+const mobileMenuClass = computed(() => {
+    return {
+        'hidden': !mobileMenuOpen.value,
+        'block': mobileMenuOpen.value,
+        'sm:hidden': true,
+        'px-2 pt-2 pb-3 space-y-1 sm:px-3': true,
+    };
+});
+
 
 
 const { user } = useAuth();
@@ -50,22 +65,6 @@ const handleLogout = () => {
     router.push({ path: '/iniciar-sesion' });
 };
 
-const mobileMenuOpen = ref(false);
-
-function toggleMobileMenu() {
-    mobileMenuOpen.value = !mobileMenuOpen.value;
-}
-
-const mobileMenuClass = computed(() => {
-    return {
-        'hidden': !mobileMenuOpen.value,
-        'block': mobileMenuOpen.value,
-        'sm:hidden': true,
-        'px-2 pt-2 pb-3 space-y-1 sm:px-3': true,
-    };
-});
-
-
 
 </script>
 
@@ -95,7 +94,9 @@ const mobileMenuClass = computed(() => {
                             <img src="/img/logo-verde-horizontal.png" alt="Logo" class="w-28 ">
                         </router-link>
 
-
+                        <router-link to="/">
+                            <img src="/img/logo-verde-horizontal.png" alt="Logo" class="w-28 ">
+                        </router-link>
                     </div>
                     <!-- Menú de navegación principal -->
                     <div class="hidden sm:block sm:ml-6">
@@ -133,20 +134,6 @@ const mobileMenuClass = computed(() => {
                                 to="/perfiladmin">Mi
                                 Perfil Administrador
                             </router-link>
-                            <div v-if="user.id !== null" class="ml-3">
-                                <div class="text-base font-medium text-mylogo">
-                                    Bienvenido {{ user.displayName || user.email }}
-                                </div>
-                            </div>
-
-                            <div v-if="user.id !== null">
-                                <form action="#" method="post" @submit.prevent="handleLogout">
-                                    <button type="submit"
-                                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                        Cerrar Sesión
-                                    </button>
-                                </form>
-                            </div>
 
                         </div>
                     </div>
@@ -189,26 +176,10 @@ const mobileMenuClass = computed(() => {
                     Perfil Administrador
                 </router-link>
 
-                <div v-if="user.id !== null" class="ml-3">
-                    <div class="text-base font-medium text-mylogo">
-                        Bienvenido {{ user.displayName || user.email }}
-                    </div>
-                </div>
-                <div v-if="user.id !== null">
-                    <form action="#" method="post" @submit.prevent="handleLogout">
-                        <button type="submit"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                            Cerrar Sesión
-                        </button>
-                    </form>
-                </div>
-
-
+                
             </div>
         </div>
     </nav>
-
-
 
     <main class="container mx-auto mt-5">
         <CompAlert :data="feedback" @close="clearFeedbackMessage" />
@@ -227,9 +198,6 @@ const mobileMenuClass = computed(() => {
                         class="flex flex-col items-center justify-center flex-1 hover:text-white border-gray-100 md:items-end md:border-r md:pr-5">
                         <router-link class="hover:text-white" to="/productos">Productos</router-link>
                         <router-link class="hover:text-white" to="/">Home</router-link>
-                        <router-link v-if="user.id === null" class="hover:text-white" to="/iniciar-sesion">Iniciar
-                            Sesión</router-link>
-                        <router-link v-if="user.id === null" class="hover:text-white" to="/registro">Registro</router-link>
 
                     </nav>
                     <div class="h-px mx-auto mt-4 rounded-full md:hidden w-11">
