@@ -1,16 +1,3 @@
-<script setup>
-
-
-defineProps({
-    full: {
-        type: Boolean,
-        default: false,
-    }
-}
-)
-
-</script>
-
 <template>
     <div class="mt-3 py-2 px-4 flex justify-center items-center  bg-blue-400  text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
         :class="{
@@ -26,4 +13,17 @@ defineProps({
 
     </div>
 </template>
+<script setup>
+
+defineProps({
+    full: {
+        type: Boolean,
+        default: false,
+    }
+}
+)
+
+</script>
+
+
 

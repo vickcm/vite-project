@@ -8,7 +8,6 @@
 
     <CompLoading v-if="initialLoading">Cargando...</CompLoading>
 
-   
     <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <li v-for="product in products" :key="product.id"
         class="bg-white shadow-md rounded-lg overflow-hidden transform hover:scale-105 transition duration-300">
@@ -23,11 +22,11 @@
         <div class="p-4">
           <p class="text-gray-700 text-end">{{ product.descripcion }}</p>
           <p class="text-gray-900 text-end font-bold mt-2">${{ product.precio }}</p>
-          <a v-if="user.email"
+          <button v-if="user.email"
             :class="['bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded', { 'opacity-50': !user }]"
             :disabled="!user" @click="reserveProductHandler(product)">
             Reservar
-          </a>
+          </button>
         </div>
       </li>
     </ul>
@@ -66,12 +65,7 @@ const subscribeToProductChange = () => {
 const reserveProductHandler = async (product) => {
   clearFeedbackMessage();
   const productData = product;
-  console.log('product', productData);
-
-  console.log('user', user.value.id);
-
-
-  const response = await reserveProduct(productData, user.value.id);
+    const response = await reserveProduct(productData, user.value.id);
   setFeedbackMessage({
     type: 'success',
     message: '¡Gracias por reservar. Próximamente recibirás un mail con las indicaciones para activar el servicio!',
@@ -79,8 +73,6 @@ const reserveProductHandler = async (product) => {
 
   // Redirigir a la página de perfil
   router.push('/perfil');
-
-  console.log('response', response);
 };
 
 

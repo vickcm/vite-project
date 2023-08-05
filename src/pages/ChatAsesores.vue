@@ -13,11 +13,8 @@
       </form>
     </div>
 
-
-
     <CompLoading v-if="formLoading"></CompLoading>
     <h2>Chat Asesores</h2>
-
 
     <div v-if="loading">
       Cargando mensajes...

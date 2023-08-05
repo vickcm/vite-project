@@ -1,12 +1,3 @@
-<script setup>
-import { useRoute } from "vue-router";
-import { useUser } from "../composition/useUser.js";
-import LoadingContext from "../components/LoadingContext.vue";
-
-const route = useRoute();
-const { user, loading } = useUser(route.params.id);
-</script>
-
 <template>
     <LoadingContext :loading="loading">
         <h1 class="mb-4 text-4xl">Perfil de {{ user.email }}</h1>
@@ -16,3 +7,13 @@ const { user, loading } = useUser(route.params.id);
         }}</router-link>
     </LoadingContext>
 </template>
+
+<script setup>
+import { useRoute } from "vue-router";
+import { useUser } from "../composition/useUser.js";
+import LoadingContext from "../components/LoadingContext.vue";
+
+const route = useRoute();
+const { user, loading } = useUser(route.params.id);
+</script>
+

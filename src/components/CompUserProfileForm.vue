@@ -1,3 +1,40 @@
+<template>
+  <CompButton @click="showModal = true">Editar Perfil</CompButton>
+
+  <div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75" v-if="showModal">
+    <div class="bg-white w-full max-w-md p-6 mx-auto">
+      <div class="flex justify-end">
+        <button class="text-gray-500 hover:text-gray-700" @click="closeModal">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <h1 class="text-3xl font-bold mb-4">Editar Perfil</h1>
+
+      <form action="#" method="post" @submit.prevent="handleSubmit">
+        <div class="mb-4">
+          <CompLabel for="displayName">Nombre de usuario </CompLabel>
+          <CompInput id="displayName" v-model="form.displayName" />
+        </div>
+
+        <div class="mb-4">
+          <CompLabel for="photoURL">Foto de Perfil</CompLabel>
+          <CompInput type="file" id="photoURL" @change="handleFile" />
+        </div>
+
+        <div v-if="form.photoURL !== null" class="mb-4">
+          <p class="mb-1">Previsualización de la imagen</p>
+          <img :src="form.photoURL" alt="">
+        </div>
+
+        <CompButton>Actualizar mis datos</CompButton>
+      </form>
+    </div>
+  </div>
+</template>
+
 <script setup>
 import { inject, ref, watch } from 'vue';
 import CompButton from "./CompButton.vue";
@@ -29,9 +66,9 @@ function useEditProfile(user) {
   });
 
   watch(user, newUser => {
-        form.value.displayName = newUser.displayName;
-       
-    });
+    form.value.displayName = newUser.displayName;
+
+  });
 
   const loading = ref(false);
 
@@ -83,39 +120,3 @@ function useEditProfile(user) {
 }
 </script>
 
-<template>
-  <CompButton @click="showModal = true">Editar Perfil</CompButton>
-
-  <div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75" v-if="showModal">
-    <div class="bg-white w-full max-w-md p-6 mx-auto">
-      <div class="flex justify-end">
-        <button class="text-gray-500 hover:text-gray-700" @click="closeModal">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-
-      <h1 class="text-3xl font-bold mb-4">Editar Perfil</h1>
-
-      <form action="#" method="post" @submit.prevent="handleSubmit">
-        <div class="mb-4">
-          <CompLabel for="displayName">Nombre de usuario </CompLabel>
-          <CompInput id="displayName" v-model="form.displayName" />
-        </div>
-
-        <div class="mb-4">
-          <CompLabel for="photoURL">Foto de Perfil</CompLabel>
-          <CompInput type="file" id="photoURL" @change="handleFile" />
-        </div>
-
-        <div v-if="form.photoURL !== null" class="mb-4">
-          <p class="mb-1">Previsualización de la imagen</p>
-          <img :src="form.photoURL" alt="">
-        </div>
-
-        <CompButton>Actualizar mis datos</CompButton>
-      </form>
-    </div>
-  </div>
-</template>

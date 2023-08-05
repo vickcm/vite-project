@@ -1,6 +1,7 @@
 <template>
   <div>
-    <button class="px-4 py-2 my-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700" @click="showModal = true">
+    <button class="px-4 py-2 my-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700"
+      @click="showModal = true">
       Borrar Producto
     </button>
 
@@ -36,7 +37,7 @@
             <CompInput type="number" name="precio" id="precio" v-model="form.precio" />
           </div>
 
-          <CompButton class="bg-red-500 hover:bg-red-700"  type="submit">Borrar Definitivamente</CompButton>
+          <CompButton class="bg-red-500 hover:bg-red-700" type="submit">Borrar Definitivamente</CompButton>
         </form>
       </div>
     </div>
@@ -66,10 +67,6 @@ const form = ref({
 });
 
 const product = ref(props.product);
-
-
-
-
 const showModal = ref(false);
 const formLoading = ref(false);
 const emits = defineEmits(["productDeleted"]);
@@ -79,14 +76,13 @@ const closeModal = () => {
 };
 
 const handleDeleteProduct = async () => {
- 
-  
+
   formLoading.value = true;
 
   clearFeedbackMessage();
- 
+
   try {
-    await deleteProduct(product.value.id,  );
+    await deleteProduct(product.value.id,);
     form.value.titulo = "";
     form.value.descripcion = "";
     form.value.precio = "";

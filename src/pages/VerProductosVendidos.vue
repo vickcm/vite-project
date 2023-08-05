@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-x-auto">
     <h1 class="text-2xl font-bold mb-4">Productos Vendidos</h1>
-    <p class="text-xs  text-gray-500">*Es posible que la visualización de la tabla en dispositivos pequeños se vea
+    <p class="text-gray-500">*Es posible que la visualización de la tabla en dispositivos pequeños se vea
       afectada. Se sugiere la vista en computadoras de escritorio o laptops.</p>
 
     <template v-if="isLoading">

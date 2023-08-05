@@ -1,6 +1,7 @@
 <template>
   <div>
-    <button class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700" @click="showModal = true">
+    <button class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700"
+      @click="showModal = true">
       Editar Producto
     </button>
 
@@ -60,11 +61,6 @@ const form = ref({
 });
 
 const product = ref(props.product);
-
-
-
-
-
 const showModal = ref(false);
 const formLoading = ref(false);
 const emits = defineEmits(["productEdited"]);
@@ -74,8 +70,8 @@ const closeModal = () => {
 };
 
 const handleEditProduct = async () => {
- 
-  
+
+
   formLoading.value = true;
   const { titulo, descripcion, precio } = form.value;
   clearFeedbackMessage();
@@ -90,7 +86,7 @@ const handleEditProduct = async () => {
   }
 
   try {
-    await updateProduct(product.value.id, form.value );
+    await updateProduct(product.value.id, form.value);
 
     form.value.titulo = "";
     form.value.descripcion = "";

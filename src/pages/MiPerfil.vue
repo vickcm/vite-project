@@ -18,15 +18,12 @@
         <CompLabel>Rol</CompLabel>
         <CompInput v-model="user.role" :disabled="true" />
       </div>
-      <div class="mb-4">
-        <CompLabel>Id</CompLabel>
-        <CompInput v-model="user.id" :disabled="true" />
-      </div>
+
       <CompUserProfileForm @userEdited="handleEditUser"></CompUserProfileForm>
     </div>
 
     <div class="w-full sm:w-1/2 bg-white rounded-lg shadow p-6">
-      <h1 class="text-3xl font-bold mb-6">Asesores Disponibles para Chatear</h1>
+      <h1 class="text-3xl font-bold mb-6">Asesores disponibles para chatear</h1>
       <ul>
         <li v-for="admin in adminUsers" :key="admin.id">
           <span v-if="admin.displayName" class="ml-2 text-gray-500">{{ admin.displayName }}: </span>
@@ -105,7 +102,7 @@ const loadPurchasedProducts = async () => {
 };
 
 const startChatWithAdmin = (admin) => {
-  router.push({ path: `/usuario/${admin.id}` });
+  router.push({ path: `/usuario/${admin.id}/chat` });
 };
 
 onMounted(async () => {

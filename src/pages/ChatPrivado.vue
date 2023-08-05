@@ -107,8 +107,6 @@ function usePrivateChatForm(fromUser, toUser) {
 
   async function handleSubmit() {
     formLoading.value = true;
-
-    // TODO: Capturar errores.
     await sendPrivateMessages(fromUser.value.id, toUser.value.id, form.value.message);
     formLoading.value = false;
     form.value.message = "";

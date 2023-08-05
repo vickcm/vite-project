@@ -3,7 +3,6 @@
     <div class="w-full sm:w-1/2 bg-white rounded-lg shadow p-6 mb-4 sm:mb-0">
       <h1 class="text-3xl font-bold mb-6">Perfil Administrador</h1>
 
-
       <div class="mb-4 flex items-center">
         <CompLabel class="mr-4 hidden">Mi Imagen</CompLabel>
         <CompImage :src="user.photoURL" />
@@ -24,9 +23,8 @@
       <CompUserProfileForm @userEdited="handleEditUser"></CompUserProfileForm>
     </div>
     <div class="w-full sm:w-1/2 bg-white rounded-lg shadow p-6">
-      <h1 class="text-3xl font-bold mb-6">Clientes Disponibles para chatear</h1>
+      <h1 class="text-3xl font-bold mb-6">Clientes disponibles para chatear</h1>
       <template v-if="isLoading">
-        <!-- Mostrar el componente de loading mientras se cargan los productos -->
         <CompLoading class="my-4">Cargando</CompLoading>
       </template>
 
@@ -41,10 +39,7 @@
     </div>
   </div>
 </template>
-    
-     
  
-
 <script setup>
 import CompLabel from "../components/CompLabel.vue";
 import CompInput from "../components/CompInput.vue";
@@ -60,8 +55,6 @@ const router = useRouter();
 
 const { user } = useAuth();
 const isLoading = ref(false);
-
-
 const defaultAvatar = '/img/defaultavatar.png';
 const listUsers = ref([]);
 
@@ -78,7 +71,7 @@ const loadUsers = async () => {
 
 const startChatWithUsers = (rolUser) => {
   router.push({
-    path: `/usuario/${rolUser.id}`
+    path: `/usuario/${rolUser.id}/chat`
   });
 };
 
@@ -92,7 +85,7 @@ const handleEditUser = () => {
   watch(() => auth.user, (newUser) => {
     // Se ejecutará cada vez que cambie el objeto `user` en el módulo `auth`
     console.log('Datos del usuario actualizados:', newUser);
-    
+
   });
 
 };

@@ -79,7 +79,7 @@ const mobileMenuClass = computed(() => {
                     <!-- Icono de menú en dispositivos móviles -->
                     <button @click="toggleMobileMenu"
                         class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                        <span class="sr-only">Open main menu</span>
+                        <span class="sr-only">Abrir menú</span>
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -88,13 +88,16 @@ const mobileMenuClass = computed(() => {
                     </button>
                 </div>
                 <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                    <!-- Logo o título del sitio -->
-                    <!-- Reemplaza el siguiente código con tu logo o título -->
+
                     <div class="flex-shrink-0 flex items-center">
                         <router-link to="/">
                             <img src="/img/logo-verde-horizontal.png" alt="Logo" class="w-28 ">
                         </router-link>
-
+                        <div v-if="user.id !== null" class="ml-3">
+                            <div class="text-base font-medium text-mylogo">
+                                Bienvenido {{ user.displayName || user.email }}
+                            </div>
+                        </div>
 
                     </div>
                     <!-- Menú de navegación principal -->
@@ -104,10 +107,10 @@ const mobileMenuClass = computed(() => {
 
                             <router-link
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                v-if="user.role !== 'admin'" to="/">Home</router-link>
+                                to="/">Home</router-link>
                             <router-link
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                v-if="user.role !== 'admin'" to="/productos">Productos</router-link>
+                                to="/productos">Productos</router-link>
                             <router-link v-if="user.id === null"
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                 to="/iniciar-sesion">Iniciar
@@ -125,19 +128,14 @@ const mobileMenuClass = computed(() => {
                             </router-link>
                             <router-link v-if="user.id !== null && user.role !== 'admin'"
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                to="/perfil">Mi
-                                Perfil
+                                to="/perfil">Mi Perfil
                             </router-link>
                             <router-link v-if="user.id !== null && user.role === 'admin'"
                                 class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                 to="/perfiladmin">Mi
                                 Perfil Administrador
                             </router-link>
-                            <div v-if="user.id !== null" class="ml-3">
-                                <div class="text-base font-medium text-mylogo">
-                                    Bienvenido {{ user.displayName || user.email }}
-                                </div>
-                            </div>
+
 
                             <div v-if="user.id !== null">
                                 <form action="#" method="post" @submit.prevent="handleLogout">
@@ -157,6 +155,11 @@ const mobileMenuClass = computed(() => {
         <div :class="mobileMenuClass">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <!-- Enlaces de navegación -->
+                <div v-if="user.id !== null" class="ml-3">
+                    <div class="text-base font-medium text-mylogo text-center">
+                        Bienvenido {{ user.displayName || user.email }}
+                    </div>
+                </div>
                 <router-link
                     class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                     v-if="user.role !== 'admin'" to="/">Home</router-link>
@@ -185,15 +188,9 @@ const mobileMenuClass = computed(() => {
                 </router-link>
                 <router-link v-if="user.id !== null && user.role === 'admin'"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                    to="/perfiladmin">Mi
-                    Perfil Administrador
+                    to="/perfiladmin">Mi Perfil Administrador
                 </router-link>
 
-                <div v-if="user.id !== null" class="ml-3">
-                    <div class="text-base font-medium text-mylogo">
-                        Bienvenido {{ user.displayName || user.email }}
-                    </div>
-                </div>
                 <div v-if="user.id !== null">
                     <form action="#" method="post" @submit.prevent="handleLogout">
                         <button type="submit"

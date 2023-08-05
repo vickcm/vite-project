@@ -1,3 +1,39 @@
+<template>
+  <div class="flex justify-center h-screen">
+    <div class="w-full sm:w-1/2 p-6 rounded-lg">
+      <h1 class="text-3xl font-bold">
+        Iniciar Sesión
+      </h1>
+
+      <form action="#" method="post" @submit.prevent="handleSubmit" class="mt-4 p-4 border rounded-lg bg-gray-100">
+        <div class="mb-4">
+          <CompLabel for="email">
+            Mail
+          </CompLabel>
+          <CompInput type="email" name="email" id="email" v-model="user.email" />
+        </div>
+
+        <div class="mb-4">
+          <CompLabel for="password">
+            Password
+          </CompLabel>
+          <div class="relative">
+            <CompInput :type="showPassword ? 'text' : 'password'" name="password" id="password" v-model="user.password"
+              :inputClass="{ 'pr-10': !showPassword }" />
+            <span class="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs cursor-pointer text-gray-400"
+              @click="showPassword = !showPassword">
+              {{ showPassword ? 'Ocultar' : 'Ver' }}
+            </span>
+          </div>
+        </div>
+
+        <CompButton type="submit">
+          Login
+        </CompButton>
+      </form>
+    </div>
+  </div>
+</template>
 <script setup>
 import { login } from "../services/auth.js";
 import { useRouter } from 'vue-router';
@@ -54,39 +90,4 @@ function useLoginForm() {
 }
 </script>
 
-<template>
-  <div class="flex justify-center h-screen">
-    <div class="w-full sm:w-1/2 p-6 rounded-lg">
-      <h1 class="text-3xl font-bold">
-        Iniciar Sesión
-      </h1>
 
-      <form action="#" method="post" @submit.prevent="handleSubmit" class="mt-4 p-4 border rounded-lg bg-gray-100">
-        <div class="mb-4">
-          <CompLabel for="email">
-            Mail
-          </CompLabel>
-          <CompInput type="email" name="email" id="email" v-model="user.email" />
-        </div>
-
-        <div class="mb-4">
-          <CompLabel for="password">
-            Password
-          </CompLabel>
-          <div class="relative">
-            <CompInput :type="showPassword ? 'text' : 'password'" name="password" id="password" v-model="user.password"
-              :inputClass="{ 'pr-10': !showPassword }" />
-            <span class="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs cursor-pointer text-gray-400"
-              @click="showPassword = !showPassword">
-              {{ showPassword ? 'Ocultar' : 'Ver' }}
-            </span>
-          </div>
-        </div>
-
-        <CompButton type="submit">
-          Login
-        </CompButton>
-      </form>
-    </div>
-  </div>
-</template>

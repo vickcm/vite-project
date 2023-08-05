@@ -8,7 +8,6 @@ import MiPerfil from "../pages/MiPerfil.vue";
 import PerfilAdmin from "../pages/PerfilAdmin.vue";
 import PerfilUsuario from "../pages/PerfilUsuario.vue";
 import ChatPrivado from "../pages/ChatPrivado.vue";
-import ChatAsesores from "../pages/ChatAsesores.vue";
 import VerProductosVendidos from "../pages/VerProductosVendidos.vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 import { subscribeAuth, isAdmin } from "../services/auth.js";
@@ -74,7 +73,7 @@ const routes = [
     path: "/perfiladmin",
     name: "perfilAdmin",
     component: PerfilAdmin,
-    meta: { requiresAuth: true, requiresAdmin: true },
+    meta: { requiresAuth: true, requiresAdmin: true }, // Agrega la propiedad "requiresAdmin" a la ruta
   },
 ];
 
